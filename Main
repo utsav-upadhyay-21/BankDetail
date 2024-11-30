@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // List to hold customer details
+        List<Customer> customerList = new ArrayList<>();
+
+        // Input number of customers
+        System.out.print("How many customers do you want to enter? ");
+        int numberOfCustomers = scanner.nextInt();
+        scanner.nextLine(); // Clear the newline character
+
+        // Gather details for each customer
+        for (int i = 1; i <= numberOfCustomers; i++) {
+            System.out.println("\n--- Enter Details for Customer " + i + " ---");
+
+            System.out.print("Customer ID: ");
+            int customerId = scanner.nextInt();
+
+            scanner.nextLine(); // Clear the newline character
+            System.out.print("First Name: ");
+            String firstName = scanner.nextLine();
+
+            System.out.print("Last Name: ");
+            String lastName = scanner.nextLine();
+
+            System.out.print("Account Balance: ");
+            double accountBalance = scanner.nextDouble();
+
+            // Create a new customer and add to the list
+            customerList.add(new Customer(customerId, firstName, lastName, accountBalance));
+        }
+
+        // Sort customers by the specified criteria
+        customerList.sort(null); // Uses compareTo from the Customer class
+
+        // Display the sorted list of customers
+        System.out.println("\n--- Sorted Customer List ---");
+        for (Customer customer : customerList) {
+            System.out.println(customer);
+        }
+
+        scanner.close();
+    }
+}
